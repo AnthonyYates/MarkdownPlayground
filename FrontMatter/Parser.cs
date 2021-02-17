@@ -37,17 +37,7 @@ namespace FrontMatterParser
             if (block == null)
                 return default;
 
-            var yaml =
-                block
-                // yep...we have to call .Lines 2x
-                .Lines // StringLineGroup[]
-                .Lines // StringLine[]
-                .OrderByDescending(x => x.Line)
-                .Select(x => $"{x}\n")
-                .ToList()
-                .Select(x => x.Replace("---", string.Empty))
-                .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Aggregate((s, agg) => agg + s);
+            var yaml = block.Lines.ToString();
 
             return YamlDeserializer.Deserialize<T>(yaml);
         }
