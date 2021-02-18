@@ -33,9 +33,9 @@ namespace FrontMatterParser
         /// <typeparam name="T">Class with Yaml decorated properties that represent the front matter</typeparam>
         /// <param name="markdown"></param>
         /// <returns>Strongly typed class with front matter contents.</returns>
-        /// <
         /// <example>
         /// Markdown content with front matter:
+        /// <code lang="markdown">
         /// ---
         /// title: My title here
         /// desc: My description here
@@ -45,7 +45,10 @@ namespace FrontMatterParser
         /// ## My header here
         /// 
         /// My paragraph content here...
+        /// </code>
         /// 
+        /// Yaml front matter class representation:
+        /// <code lang="charp">
         /// // represents class decorated with yaml properties
         /// public class FrontMatterClass
         /// {
@@ -58,11 +61,19 @@ namespace FrontMatterParser
         ///     [YamlMember(Alias = "link")]
         ///     public string Link { get; set; }
         /// }
+        /// </code>
         /// 
-        /// var yamlAsClassInstance = 
-        ///     FrontMatterParser.Parser.Parse<FrontMatterClass>(markdownString);
+        /// Use:
+        /// <code lang="csharp">
+        /// var markdownString = {Load from example above...}
+        /// var fmInstance = FrontMatterParser.Parser.Parse&lt;FrontMatterClass&gt;(markdownString);
+        ///
+        /// var title = yamlAsClassInstance.Title;
+        /// 
+        /// Assert.Equals(title, "My title here");
+        /// </code>
         /// </example>
-        public static T Parse<T>(this string markdown)
+        public static T Parse<T>(string markdown)
         {
             var document = Markdown.Parse(markdown, Pipeline);
             var block = document
