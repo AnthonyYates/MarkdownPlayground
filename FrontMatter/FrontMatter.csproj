@@ -6,7 +6,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Users\tony\source\repos\MarkdownPlayground\FrontMatter\FrontMatter.xml</DocumentationFile>
-    <OutputPath>C:\Users\tony\source\Docs\FrontMatter\docfx_project\src\</OutputPath>
+    <OutputPath></OutputPath>
   </PropertyGroup>
   
   <ItemGroup>
